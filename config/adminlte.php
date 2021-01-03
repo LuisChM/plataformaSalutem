@@ -230,18 +230,27 @@ return [
 
         ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text' => 'Facturas',
+            'route'  => 'facturas.index',
+            'icon' => 'fas fa-fw fa-home',
+            'can' => 'create_Facturas'
+
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text' => 'Usuarios',
+            'route'  => 'users.index',
+            'icon' => 'fas fa-fw fa-home',
+            'can' => 'create_Facturas'
+
         ],
-        ['header' => 'account_settings'],
+        [
+            'text' => 'Roles',
+            'route'  => 'roles.index',
+            'icon' => 'fas fa-fw fa-home',
+            'can' => 'create_Facturas'
+
+        ],
+               ['header' => 'account_settings'],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',

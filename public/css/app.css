@@ -36818,5 +36818,7 @@ a.text-muted:hover {
 
 [class*="accent-"] a.btn-dark {
   color: #ffffff;
+}.responsive-table {
+  overflow-x: auto;
 }
 

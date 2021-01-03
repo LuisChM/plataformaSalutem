@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['permission:create_Facturas']], function () {
+
+    Route::resource('factura', 'App\Http\Controllers\FacturaController')->names('facturas');
+});
+
+Route::resource('user', 'App\Http\Controllers\UserController')->names('users');
+
+Route::resource('role', 'App\Http\Controllers\RoleController')->names('roles');

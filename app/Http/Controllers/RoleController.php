@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\SaveRolRequest;
 use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware([
+            'auth',
+        ]);
+    }
  /**
      * Display a listing of the resource.
      *

@@ -3,13 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Factura;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\SaveFacturaRequest;
 
 class FacturaController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware([
+            'auth',
+        ]);
+    }
     /**
      * Display a listing of the resource.
      *

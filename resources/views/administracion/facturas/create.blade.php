@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Control costo / gasto</h1>
+<h1>Facturas de Compras</h1>
 @stop
 
 @section('content')
@@ -28,7 +28,15 @@
     @stop
     
     @section('js')
-        <script> console.log('Hi!'); </script>
+
+    <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
+    <script>
+    CKEDITOR.replace( 'descripcion', {
+        filebrowserUploadUrl: "{{route('facturas.store', ['_token' => csrf_token() ])}}",
+    filebrowserUploadMethod: 'form'
+    });
+    </script>
+    
     @stop
      
     

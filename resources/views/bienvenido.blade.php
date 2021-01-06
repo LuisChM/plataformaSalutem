@@ -8,13 +8,11 @@
     <img src="/img/logo.svg" alt="arrow" style="width:50%" class="mx-auto d-block  logoCentro" >
   </div>
 
+  @stop
+
+  @section('css')
+  <link rel="stylesheet" href="/css/admin_custom.css">
+  @stop
   
-@stop
-
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
-@section('js')
-@stop
- 
+  @section('js')
+  @stop

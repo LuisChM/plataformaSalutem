@@ -3,20 +3,21 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-<h1>Usuarios</h1>
+<h1>Plan Nutricional</h1>
 @stop
 
 @section('content')
 <div class="container mt-5">
-    <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-10 col-lg-8">
-                <form class="mt-4" action="{{ route('users.update', $user) }}" method="POST">
+            <div class="col-12">
+                <form class="mt-4" action="{{route('planNutricionals.update', $planNutricional)}}"
+                    method="POST">
+                    @csrf
                     @method('PATCH')
-                    @include('administracion.users._form',['btnText'=>'Actualizar'])
+                    @include('nutricion.planNutricional._form',['btnText'=>'Guardar'])
+
                 </form>
             </div>
-        </div>
     </div>
 </div>
 @stop

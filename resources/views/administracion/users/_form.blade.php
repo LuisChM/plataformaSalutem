@@ -84,7 +84,7 @@
             @enderror
 </div>
 
-<div class="d-flex justify-content-end mt-5">
+<div class="d-flex justify-content-end m-5">
     <a class="btn btn-primary mr-3" href="{{ route('users.index') }}" role="button">Volver</a>
     <button class="btn btn-secondary text-white">{{ $btnText ?? '' }}</button>
 </div>

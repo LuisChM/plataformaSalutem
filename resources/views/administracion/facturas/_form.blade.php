@@ -37,6 +37,8 @@
         </span>
         @enderror
     </div>
+    <br>
+<br>
 </div>
 <div class="form-group ">
     <label for="total">Total de la factura:</label>

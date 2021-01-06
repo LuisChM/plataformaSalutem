@@ -3,13 +3,13 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Control costo / gasto</h1>
+    <h1>Facturas de Compras</h1>
 @stop
 
 @section('content')
 <div class="container mt-5">
     <div class="responsive-table">
-        @can('create_Facturas')   
+        @can('Crear facturas')   
         <a class="btn btn-primary mb-3" href="{{route('facturas.create')}}" role="button">Agregar nueva factura </a>
         @endcan
         

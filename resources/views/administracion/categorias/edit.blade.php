@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-<h1>Roles</h1>
+<h1>Categorias</h1>
 @stop
 
 @section('content')
@@ -11,9 +11,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-10 col-lg-8">
-                <form class="mt-4"  action="{{route('roles.update',$role)}}" method="POST"> 
+                <form class="mt-4"  action="{{route('categorias.update',$categoria)}}" method="POST"> 
                     @method('PATCH')
-                    @include('administracion.roles._form',['btnText'=>'Actualizar'])
+                    @include('administracion.categorias._form',['btnText'=>'Actualizar'])
                 </form>
             </div>
         </div>
@@ -21,9 +21,9 @@
     @stop
 
     @section('css')
-        <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="/css/admin_custom.css">
     @stop
     
     @section('js')
     @stop
-     
+    

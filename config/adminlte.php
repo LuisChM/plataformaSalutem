@@ -222,99 +222,104 @@ return [
     |
     */
 
+    // 'can' => [
+    //     'Ver', 'Crear', 'Editar', 'Eliminar'
+    // ]
+
     'menu' => [
         [
-            'text' => 'Dashboard',
-            'route'  => 'home',
-            'icon' => 'fas fa-fw fa-home',
-
-        ],
-        [
-            'text' => 'Facturas',
-            'route'  => 'facturas.index',
-            'icon' => 'fas fa-fw fa-home',
-            'can' => 'create_Facturas'
-
-        ],
-        [
-            'text' => 'Usuarios',
-            'route'  => 'users.index',
-            'icon' => 'fas fa-fw fa-home',
-            'can' => 'create_Facturas'
-
-        ],
-        [
-            'text' => 'Roles',
-            'route'  => 'roles.index',
-            'icon' => 'fas fa-fw fa-home',
-            'can' => 'create_Facturas'
-
-        ],
-               ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'Control de Productos',
+            'icon' => 'fas fa-box',
             'submenu' => [
                 [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Productos',
+                    'url'  => 'producto',
                 ],
                 [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
+                    'text' => 'Retirar Producto',
+                    'url'  => 'retirar_producto',
+
                 ],
             ],
         ],
-        ['header' => 'labels'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
+            'text'    => 'Control de Comidas',
+            'icon' => 'fas fa-utensils',
+            'submenu' => [
+                [
+                    'text' => 'Administración de Comidas',
+                    'url'  => 'ventas',
+                ],
+                [
+                    'text' => 'Estadística de Comidas',
+                    'url'  => 'estadisticascomida',
+
+                ],
+            ],
         ],
         [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
+            'text'    => 'Control Costo/Gasto',
+            'icon' => 'fas fa-dollar-sign',
+            'submenu' => [
+                [
+                    'text' => 'Facturas de Compras',
+                    'url'  => 'factura',
+                ],
+            ],
         ],
         [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
+            'text'    => 'Nuricionista',
+            'icon' => 'fas fa-weight',
+            'submenu' => [
+                [
+                    'text' => 'Consulta nutricional',
+                    'url'  => 'paciente/create',
+                ],
+                [
+                    'text' => 'Pacientes',
+                    'url'  => 'paciente',
+                ],
+                [
+                    'text' => 'Cálculo de dieta',
+                    'url'  => 'calculo',
+                ],
+                [
+                    'text' => 'Plan nutricional',
+                    'url'  => 'planNutricional',
+                ],
+            ],
         ],
+        [
+            'can' => ['Ver usuarios', 'Crear usuarios', 'Editar usuarios', 'Eliminar usuarios','Ver roles', 'Crear roles', 'Editar roles', 'Eliminar roles'],
+            'text'    => 'Manejo de usuarios',
+            'icon' => 'fas fa-users',
+            'submenu' => [
+                [
+                    'text' => 'Usuarios',
+                    'url'  => 'user',
+                    'can' => ['Ver usuarios', 'Crear usuarios', 'Editar usuarios', 'Eliminar usuarios']
+                ],
+                [
+                    'text' => 'Roles',
+                    'url'  => 'role',
+                    'can' => ['Ver roles', 'Crear roles', 'Editar roles', 'Eliminar roles']
+
+                ],
+            ],
+        ],
+        [
+            'can' => ['Usar envio de correos'],
+            'text'    => 'Envío de Correos',
+            'icon' => 'fas fa-mail-bulk',
+            'submenu' => [
+                [
+                    'text' => 'Enviar Correos',
+                    'url'  => 'sendemail',
+                    'can' => ['Usar envio de correos']
+                ],              
+            ],
+        ]
+        
     ],
 
     /*
@@ -398,7 +403,7 @@ return [
             ],
         ],
         'Sweetalert2' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',

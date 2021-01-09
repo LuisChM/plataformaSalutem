@@ -7,8 +7,12 @@ use App\Models\Paciente;
 use Illuminate\Http\Request;
 use App\Models\HojaSeguimiento;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\SaveConsultaRequest;
 use Symfony\Component\Console\Input\Input;
+
+// use RealRashid\SweetAlert\Facades\Alert;
+// Use Alert;
 
 // use SweetAlert;
 
@@ -29,7 +33,11 @@ class PacienteController extends Controller
     {
         $name  = $request->get('buscarpor');
         $paciente = Paciente::where('nombre', 'like', "%$name%")->paginate();
-        return view('nutricion.pacientes.index', compact('paciente'));
+        if (auth()->user()->hasPermissionTo('Ver pacientes')) {
+            return view('nutricion.pacientes.index', compact('paciente'));
+        } else {
+            abort(401);
+        }
     }
 
     /**
@@ -40,16 +48,18 @@ class PacienteController extends Controller
     public function create()
     {
         $user = DB::table('users')
-            ->join('asignar_roles', 'users.id', '=', 'asignar_roles.user_id')
-            ->join('roles', 'asignar_roles.role_id', '=', 'roles.id')
-            ->where('roles.nombre', '=', 'paciente')
+            ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
+            ->where('role_id', 4)
             ->select('users.*')
             ->get();
-
-        return view('nutricion.pacientes.create', [
-            'paciente' => new Paciente,
-            'user' => $user,
-        ]);
+            if (auth()->user()->hasPermissionTo('Crear pacientes')) {
+                return view('nutricion.pacientes.create', [
+                    'paciente' => new Paciente,
+                    'user' => $user,
+                ]);
+            } else {
+                abort(401);
+            }
     }
 
     /**
@@ -92,10 +102,15 @@ class PacienteController extends Controller
     {
         $seguimiento = HojaSeguimiento::where('paciente_id', $paciente->id)->get();
         // dd($seguimiento);
-        return view('nutricion.pacientes.edit', [
-            'paciente' => $paciente,
-            'seguimiento' => $seguimiento,
-        ]);
+        if (auth()->user()->hasPermissionTo('Editar pacientes')) {
+            return view('nutricion.pacientes.edit', [
+                'paciente' => $paciente,
+                'seguimiento' => $seguimiento,
+            ]);
+
+        } else {
+            abort(401);
+        }
     }
 
     /**
@@ -109,7 +124,10 @@ class PacienteController extends Controller
     {
 
         $paciente->update($request->validated());
-        return redirect()->route('pacientes.index')->with('success', 'Se actualizo el paciente con éxito');
+        Alert::question('Question Title', 'Question Message');
+
+
+        return redirect()->route('pacientes.index');
     }
 
     /**

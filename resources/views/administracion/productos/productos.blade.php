@@ -21,7 +21,10 @@
 
     </div>
     <div>
+        @can('Crear productos')
         <a href="{{ route('agregarproductos') }}" class="btn btn-primary mb-2">Agregar nuevo productos</a>
+        @endcan
+        
     </div>
     <div class="responsive-table">
         <table class="table table-striped mt-4 text-center">
@@ -51,14 +54,17 @@
                         <form method="POST" action="{{ url('productos/' . $producto->id) }}">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
-
-                            <a href="{{ url('productos/' . $producto->id . '/edit') }}"><i class="far fa-edit text-blue mr-3"></i></a>
+                            @can('Editar productos')                                
+                            <a href="{{ url('producto/' . $producto->id . '/edit') }}"><i class="far fa-edit text-blue mr-3"></i></a>
+                            @endcan
 
                             <form method="Post" action="{{ route('productos.destroy', $productos) }}">
                                 @csrf @method('delete')
+                                @can('Eliminar productos')
                                 <button class="bg-transparent border-0" type="submit"
-                                    onclick="return confirm('Esta seguro de eliminar el dato');"><i
-                                    class="far fa-trash-alt text-red"></i></button>
+                                onclick="return confirm('Esta seguro de eliminar el dato');"><i
+                                class="far fa-trash-alt text-red"></i></button>
+                                @endcan
                             </form>
                         </form>
 

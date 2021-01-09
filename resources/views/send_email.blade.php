@@ -32,7 +32,7 @@
     </div>
     <div class="form-group">
      <label>Escriba el correo del cliente:</label>
-     <input type="email" name="email" class="form-control" multiple/>
+     <input type="email" name="email" class="form-control" value="" multiple/>
     </div>
 
     <div class="form-group">
@@ -42,8 +42,7 @@
 
     <div class="form-group">
      <label>Escriba el mensaje:</label>
-     {{-- <textarea name="message" class="form-control"></textarea> --}}
-     <textarea id="editor" name="editor"></textarea>
+     <textarea name="message" class="form-control"></textarea>
     </div>
     <div class="form-group">
      <input type="submit" name="send" class="btn btn-primary" value="Enviar correo" />
@@ -55,13 +54,4 @@
  
 @endsection
 @section('scripts')
-  <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
-  <script>
-    CKEDITOR.replace( 'editor', {
-        filebrowserUploadUrl: "{{route('sendemail.send', ['_token' => csrf_token() ])}}",
-        filebrowserUploadMethod: 'form'
-    });
-
-  </script>
-
 @endsection

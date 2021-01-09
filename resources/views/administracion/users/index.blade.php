@@ -10,9 +10,11 @@
 <div class="container mt-5">
 
     <div class="responsive-table">
-
-        {{-- <a class="btn btn-primary" href="{{route('users.create')}}" role="button">Agregar nuevo usuario </a> --}}
-
+    
+    @can('Crear usuarios')
+    <a class="btn btn-primary" href="{{route('users.create')}}" role="button">Agregar nuevo usuario </a>
+    @endcan
+    
         <table class="table table-striped mt-4 text-center">
             <thead class="thead-dark">
                 <tr>
@@ -35,17 +37,25 @@
                         <div class="d-flex justify-content-around">
 
                             {{-- seleccionar dato por id y editarlo --}}
-                            <a href="{{route('users.edit', $users)}}"><i class="far fa-eye text-green mr-3"></i></i></a>
+                            @can('Ver usuarios')
+                                
+                            <a href="{{route('users.edit', $users)}}"><i class="far fa-eye text-green mr-3"></i></a>
+                            @endcan
                                    
                             {{-- seleccionar dato por id y editarlo --}}
+                            @can('Editar usuarios')
+                                
                             <a href="{{route('users.edit',$users)}}"><i class="far fa-edit text-blue mr-3"></i></a>
+                            @endcan
 
                             {{-- seleccionar dato por id y eliminarlo --}}
-
+                            @can('Eliminar usuarios')
+                                
                             <form method="Post" action="{{route('users.destroy',$users)}}">
                                 @csrf @method('delete')
                                 <button class="bg-transparent border-0 delete-confirm" type="submit"><i class="far fa-trash-alt text-red"></i></button>
                             </form>
+                            @endcan
                         </div>
                     </td>
                 </tr> @endforeach

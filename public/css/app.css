@@ -36822,3 +36822,21 @@ a.text-muted:hover {
   overflow-x: auto;
 }
 
+.logoCentro {
+  opacity: 0.4;
+  margin-top: 100px;
+}
+
+.bg-none {
+  background: none;
+}
+
+.bg-collapse-gray {
+  background: #595959;
+}
+
+.iconoAcordion {
+  height: 18px;
+  width: 18px;
+}
+

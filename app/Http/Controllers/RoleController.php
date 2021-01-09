@@ -22,7 +22,11 @@ class RoleController extends Controller
     public function index()
     {
         $role = Role::orderBy('created_at', 'ASC')->paginate();
-        return view('administracion.roles.index', compact('role'));
+        if (auth()->user()->hasPermissionTo('Ver roles')) {
+            return view('administracion.roles.index', compact('role'));
+        } else {
+            abort(401);
+        }
     }
 
     /**
@@ -33,10 +37,16 @@ class RoleController extends Controller
     public function create()
     {
         $permissions = Permission::pluck('name','id');
-        return view('administracion.roles.create', [
-            'role' => new Role,
-            'permissions' => $permissions
-        ]);
+
+        if (auth()->user()->hasPermissionTo('Crear roles')) {
+             return view('administracion.roles.create', [
+                 'role' => new Role,
+                 'permissions' => $permissions
+                 ]);
+        
+        } else {
+            abort(401);
+        }
     }
 
     /**
@@ -74,10 +84,14 @@ class RoleController extends Controller
     {
         $permissions = Permission::pluck('name','id');
 
-        return view('administracion.roles.edit', [
-            'role' => $role,
-            'permissions' => $permissions
-        ]);
+        if (auth()->user()->hasPermissionTo('Editar roles')) {
+                return view('administracion.roles.edit', [
+                    'role' => $role,
+                    'permissions' => $permissions
+                    ]);
+        } else {
+            abort(401);
+        }
     }
 
     /**

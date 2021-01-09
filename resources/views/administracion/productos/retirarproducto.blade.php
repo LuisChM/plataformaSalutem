@@ -43,17 +43,16 @@
                     <td>{{$producto->cantidad}}</td>
                     <td>{{$producto->unidad_de_medida}}</td>
                     <td>
-
-                        <form method="POST" action="{{url('productos/'.$producto->id)}}">
-                            {{ csrf_field() }}
-                            {{method_field('DELETE')}}
-
-                            <a href="{{url('retirar_producto/'.$producto->id.'/edit')}}"><img src="/img/seleccionar.svg"
-                                    class="iconoAccion" alt="seleccionar"></a>
-
-
-                        </form>
-
+                        @can('Editar retiro de productos')
+                            
+                        <div class="d-flex justify-content-around">                        
+                            <form method="POST" action="{{url('productos/'.$producto->id)}}">
+                                {{ csrf_field() }}
+                                {{method_field('DELETE')}}                            
+                                <a href="{{url('retirar_producto/'.$producto->id.'/edit')}}"><i class="far fa-edit text-blue mr-3"></i></a>                                
+                            </form>
+                        </div>
+                        @endcan
                     </td>
                     @endforeach
 

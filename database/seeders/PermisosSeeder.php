@@ -41,9 +41,9 @@ class PermisosSeeder extends Seeder
         //retirarProductos
         $permissions_retirarProductos = [];
         array_push($permissions_retirarProductos, Permission::create(['name' => 'Ver retiro de productos']));
-        array_push($permissions_retirarProductos, Permission::create(['name' => 'Crear retiro de productos']));
+        // array_push($permissions_retirarProductos, Permission::create(['name' => 'Crear retiro de productos']));
         array_push($permissions_retirarProductos, Permission::create(['name' => 'Editar retiro de productos']));
-        array_push($permissions_retirarProductos, Permission::create(['name' => 'Eliminar retiro de productos']));
+        // array_push($permissions_retirarProductos, Permission::create(['name' => 'Eliminar retiro de productos']));
         //facturas
         $permissions_facturas = [];
         array_push($permissions_facturas, Permission::create(['name' => 'Ver facturas']));

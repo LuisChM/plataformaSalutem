@@ -1,9 +1,12 @@
-@extends('layouts.dashboard')
-@section('seccion')
-Usuarios
-@endsection
+@extends('adminlte::page')
 
-@section('contenido')
+@section('title', 'Dashboard')
+
+@section('content_header')
+<h1>Usuarios</h1>
+@stop
+
+@section('content')
 <div class="container mt-5">
     <div class="container">
         <div class="row justify-content-center">
@@ -18,4 +21,11 @@ Usuarios
         </div>
     </div>
 </div>
-@endsection
+@stop
+
+@section('css')
+<link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+@stop
